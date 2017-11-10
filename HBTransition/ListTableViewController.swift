@@ -10,7 +10,7 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
 
-    var params = ["Transition实用","神奇移动","弹性","bezier扩散","正门大开"]
+    var params = ["Transition实用","神奇移动","弹性","bezier扩散","正门大开","卡片"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,9 @@ class ListTableViewController: UITableViewController {
             break
         case 4:
             vc = OpenDoorViewController()
+            break
+        case 5:
+            vc = CardViewController()
             break
         default:break
         }
