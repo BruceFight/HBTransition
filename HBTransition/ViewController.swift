@@ -8,46 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    var v = UIView()
-    var v1 = UIView()
-    var b = UIButton()
-    var toListB = UIButton()
-    
+class ViewController: UIViewController ,UICollectionViewDelegate ,UICollectionViewDataSource {
+    public static let images = [#imageLiteral(resourceName: "bold"),#imageLiteral(resourceName: "eight"),#imageLiteral(resourceName: "five"),#imageLiteral(resourceName: "flower"),#imageLiteral(resourceName: "holk"),#imageLiteral(resourceName: "hope"),#imageLiteral(resourceName: "iron"),#imageLiteral(resourceName: "look"),#imageLiteral(resourceName: "lufei"),#imageLiteral(resourceName: "spider"),#imageLiteral(resourceName: "widow"),#imageLiteral(resourceName: "yeah")]
+    public static let abouts = ["淡入淡出","推挤","揭开","覆盖","立方体","吮吸","翻转","波纹","翻页","反翻页","开镜头","关镜头"]
     fileprivate var collectionView : UICollectionView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "CATransition"
-        v1.frame = view.bounds
-        v1.backgroundColor = .white
-        self.view.addSubview(v1)
-        v.frame = view.bounds
-        v.backgroundColor = .purple
-        self.view.addSubview(v)
-        
-        b.frame = CGRect.init(x: 0, y: 64, width: 50, height: 50)
-        b.setTitle("anim", for: .normal)
-        b.setTitleColor(.orange, for: .normal)
-        b.addTarget(self, action: #selector(animte), for: .touchUpInside)
-        self.view.addSubview(b)
-        
-        toListB.frame = CGRect.init(x: 0, y: b.frame.maxY + 20, width: 50, height: 50)
-        toListB.setTitle("toList", for: .normal)
-        toListB.setTitleColor(.blue, for: .normal)
-        toListB.addTarget(self, action: #selector(toList), for: .touchUpInside)
-        self.view.addSubview(toListB)
+        title = "CATransition"
+        view.backgroundColor = .white
+        setCollction()
+        let right = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 64))
+        right.setTitle("ToList", for: .normal)
+        right.setTitleColor(.black, for: .normal)
+        right.addTarget(self, action: #selector(toList), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: right)
     }
     
     func setCollction() -> () {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize.init(width: 100, height: 100)
-    }
-    
-    @objc func animte() -> () {
-        self.v.backgroundColor = .red
-        TransitionManager.instance.transition(view: v,
-                                              type: CATransitionType.OglFlip.type,
-                                              subType: CATransitionSubType.fromRight.type, start: nil, end: nil)
+        layout.itemSize = CGSize.init(width: view.bounds.width * 0.4, height: view.bounds.width * 0.4)
+        collectionView = UICollectionView.init(frame: view.bounds, collectionViewLayout: layout)
+        collectionView?.register(TransitionCollectionViewCell.self, forCellWithReuseIdentifier: "transition_cell")
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        collectionView?.backgroundColor = .orange
+        if let collectionView = collectionView {
+            view.addSubview(collectionView)
+        }
     }
     
     @objc func toList() -> () {
@@ -55,12 +42,33 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(listVc, animated: true)
     }
 
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
 
-
+extension ViewController {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return ViewController.images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "transition_cell", for: indexPath) as? TransitionCollectionViewCell {
+            cell.image = ViewController.images[indexPath.row]
+            cell.about = ViewController.abouts[indexPath.row]
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? TransitionCollectionViewCell {
+            cell.type = TransitionManager.instance.types[indexPath.row]
+        }
+    }
+}

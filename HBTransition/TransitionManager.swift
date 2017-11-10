@@ -12,18 +12,18 @@ import UIKit
  * decide the animation of UIView.layer
  */
 enum CATransitionType {
-    case Fade                       //淡入淡出
-    case Push                       //推挤
-    case Reveal                     //揭开
-    case MoveIn                     //覆盖
-    case Cube                       //立方体
-    case SuckEffect                 //吮吸
-    case OglFlip                    //翻转
-    case RippleEffect               //波纹
-    case PageCurl                   //翻页
-    case PageUnCurl                 //反翻页
-    case CameraIrisHollowOpen       //开镜头
-    case CameraIrisHollowClose      //关镜头
+    case Fade                       //1,淡入淡出
+    case Push                       //2,推挤
+    case Reveal                     //3,揭开
+    case MoveIn                     //4,覆盖
+    case Cube                       //5,立方体
+    case SuckEffect                 //6,吮吸
+    case OglFlip                    //7,翻转
+    case RippleEffect               //8,波纹
+    case PageCurl                   //9,翻页
+    case PageUnCurl                 //10,反翻页
+    case CameraIrisHollowOpen       //11,开镜头
+    case CameraIrisHollowClose      //12,关镜头
     
     var type : String {
         switch self {
@@ -81,6 +81,8 @@ enum CATransitionSubType {
 class TransitionManager: NSObject ,CAAnimationDelegate {
     
     public static let instance = TransitionManager()
+    public let types = [CATransitionType.Fade,.Push,.Reveal,.MoveIn,.Cube,.SuckEffect,.OglFlip,.RippleEffect,.PageCurl,.PageUnCurl,.CameraIrisHollowOpen,.CameraIrisHollowClose]
+    public let subTypes = [CATransitionSubType.fromLeft,.fromRight,.fromTop,.fromBottom]
     
     internal override init() {
         

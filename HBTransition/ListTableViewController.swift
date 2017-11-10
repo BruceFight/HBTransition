@@ -10,7 +10,7 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
 
-    var params = ["神奇移动","弹性","翻页效果","bezier扩散"]
+    var params = ["神奇移动","弹性","Transition实用","bezier扩散"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

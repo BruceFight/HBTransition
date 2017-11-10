@@ -12,14 +12,16 @@ class TransitionForVcManager: NSObject ,UIViewControllerAnimatedTransitioning {
     open var pathType = MagicPathType.push
     open var delay : TimeInterval = 0
     open var duration : TimeInterval = 0.25
-    
+    open var index : Int = 0
     fileprivate var fromVc = UIViewController()
     fileprivate var toVc = UIViewController()
     fileprivate var tempView = UIView()
     fileprivate var transitionContext : UIViewControllerContextTransitioning?
+    fileprivate var containerView = UIView()
     
-    init(pathType:MagicPathType) {
+    init(pathType:MagicPathType ,index:Int) {
         self.pathType = pathType
+        self.index = index
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -41,7 +43,7 @@ class TransitionForVcManager: NSObject ,UIViewControllerAnimatedTransitioning {
         self.transitionContext = transitionContext
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? TransitionViewController,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? TransitionShowViewController {
-            let containerView = transitionContext.containerView
+            containerView = transitionContext.containerView
             guard let tempView = fromVc.view.snapshotView(afterScreenUpdates: false) else { return }
             self.tempView = tempView
             tempView.frame = containerView.bounds
@@ -51,7 +53,7 @@ class TransitionForVcManager: NSObject ,UIViewControllerAnimatedTransitioning {
             containerView.addSubview(tempView)
             containerView.bringSubview(toFront: toVc.view)
             TransitionManager.instance.transition(view: containerView,
-                                                  type: CATransitionType.PageCurl.type,
+                                                  type: TransitionManager.instance.types[index].type,
                                                   subType: CATransitionSubType.fromRight.type,
                                                   start: nil,
                                                   end: {[weak self](anim, flag)in
@@ -67,29 +69,26 @@ class TransitionForVcManager: NSObject ,UIViewControllerAnimatedTransitioning {
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? TransitionViewController {
             self.fromVc = fromVc
             self.toVc = toVc
-            let containerView = transitionContext.containerView
+            containerView = transitionContext.containerView
             let count = containerView.subviews.count
             if count - 2 < 0 { return }
             self.tempView = containerView.subviews[count - 2]
-            fromVc.view.alpha = 0
             containerView.insertSubview(toVc.view, at: 0)
             containerView.bringSubview(toFront: tempView)
+            
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            if transitionContext.transitionWasCancelled {
+                self.tempView.isHidden = true
+            }else {
+                self.fromVc.view.alpha = 0
+                self.toVc.view.isHidden = false
+                self.tempView.removeFromSuperview()
+            }
             TransitionManager.instance.transition(view: containerView,
-                                                  type: CATransitionType.PageCurl.type,
+                                                  type: TransitionManager.instance.types[index].type,
                                                   subType: CATransitionSubType.fromLeft.type,
                                                   start: nil,
-                                                  end: {[weak self](anim ,flag) in
-                if let transitionContext = self?.transitionContext {
-                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                    if transitionContext.transitionWasCancelled {
-                        self?.tempView.isHidden = true
-                    }else {
-                        self?.fromVc.view.alpha = 0
-                        self?.toVc.view.isHidden = false
-                        self?.tempView.removeFromSuperview()
-                    }
-                }
-            })
+                                                  end: nil)
         }
     }
 }

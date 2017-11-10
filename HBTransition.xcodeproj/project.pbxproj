@@ -29,6 +29,7 @@
 		2AD4AD8F1FB3F2FB0095EF4D /* TransitionShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD4AD8E1FB3F2FB0095EF4D /* TransitionShowViewController.swift */; };
 		2AD4AD911FB3F3070095EF4D /* TransitionForVcManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD4AD901FB3F3070095EF4D /* TransitionForVcManager.swift */; };
 		2AD4AD931FB3F6090095EF4D /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD4AD921FB3F6090095EF4D /* TransitionManager.swift */; };
+		2ADEA6021FB5319B00BE7F65 /* TransitionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADEA6011FB5319B00BE7F65 /* TransitionCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		2AD4AD8E1FB3F2FB0095EF4D /* TransitionShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionShowViewController.swift; sourceTree = "<group>"; };
 		2AD4AD901FB3F3070095EF4D /* TransitionForVcManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionForVcManager.swift; sourceTree = "<group>"; };
 		2AD4AD921FB3F6090095EF4D /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		2ADEA6011FB5319B00BE7F65 /* TransitionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			children = (
 				2AD3613E1FB2967500EB8780 /* AppDelegate.swift */,
 				2AD361401FB2967500EB8780 /* ViewController.swift */,
+				2ADEA6011FB5319B00BE7F65 /* TransitionCollectionViewCell.swift */,
 				2AD4AD921FB3F6090095EF4D /* TransitionManager.swift */,
 				2AD3616C1FB2B7F700EB8780 /* ListTableViewController.swift */,
 				2A6CCA131FB3077E00EB6A21 /* Magic */,
@@ -337,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AD3616D1FB2B7F700EB8780 /* ListTableViewController.swift in Sources */,
+				2ADEA6021FB5319B00BE7F65 /* TransitionCollectionViewCell.swift in Sources */,
 				2AD4AD8F1FB3F2FB0095EF4D /* TransitionShowViewController.swift in Sources */,
 				2AD4AD931FB3F6090095EF4D /* TransitionManager.swift in Sources */,
 				2AD4AD8D1FB3F2F00095EF4D /* TransitionViewController.swift in Sources */,
