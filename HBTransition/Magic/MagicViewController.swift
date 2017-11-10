@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MagicViewController: UIViewController ,UITableViewDelegate ,UITableViewDataSource ,UINavigationControllerDelegate {
+class MagicViewController: PulicViewController ,UITableViewDelegate ,UITableViewDataSource ,UINavigationControllerDelegate {
 
     fileprivate var tableView = UITableView()
     fileprivate var images = ["bold","hope","look","yeah","five","eight"]

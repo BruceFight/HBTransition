@@ -10,7 +10,7 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
 
-    var params = ["神奇移动","弹性","Transition实用","bezier扩散"]
+    var params = ["Transition实用","神奇移动","弹性","bezier扩散","正门大开"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,16 +47,19 @@ class ListTableViewController: UITableViewController {
         var vc : UIViewController?
         switch indexPath.row {
         case 0:
-            vc = MagicViewController()
+            vc = TransitionViewController()
             break
         case 1:
             vc = SpringViewController()
             break
         case 2:
-            vc = TransitionViewController()
+            vc = MagicViewController()
             break
         case 3:
             vc = BezierViewController()
+            break
+        case 4:
+            vc = OpenDoorViewController()
             break
         default:break
         }

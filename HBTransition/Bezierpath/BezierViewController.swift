@@ -8,10 +8,9 @@
 
 import UIKit
 
-class BezierViewController: UIViewController {
+class BezierViewController: PulicViewController {
 
     open var redBtn = UIButton()
-    fileprivate var iconView = UIImageView()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Bezier"
@@ -32,7 +31,7 @@ class BezierViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @objc func p() -> () {
+    @objc override func p() -> () {
         let showVc = BezierShowViewController()
         showVc.dismissHandler = {[weak self] in
             self?.navigationController?.dismiss(animated: true, completion: nil)
@@ -45,5 +44,4 @@ class BezierViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
   
-
 }

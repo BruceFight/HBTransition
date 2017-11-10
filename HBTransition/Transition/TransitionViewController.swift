@@ -8,18 +8,15 @@
 
 import UIKit
 
-class TransitionViewController: UIViewController ,UINavigationControllerDelegate ,UICollectionViewDelegate ,UICollectionViewDataSource {
+class TransitionViewController: PulicViewController ,UINavigationControllerDelegate ,UICollectionViewDelegate ,UICollectionViewDataSource {
 
-    fileprivate var iconView = UIImageView()
+    
     fileprivate var collectionView : UICollectionView?
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Transition实用"
         view.backgroundColor = .red
-        iconView.frame = view.bounds
-        iconView.image = #imageLiteral(resourceName: "look")
-        iconView.isUserInteractionEnabled = false
-        view.addSubview(iconView)
+        icon = #imageLiteral(resourceName: "look")
         setCollction()
     }
     
@@ -42,11 +39,7 @@ class TransitionViewController: UIViewController ,UINavigationControllerDelegate
         self.navigationController?.delegate = showVc
         self.navigationController?.pushViewController(showVc, animated: true)
     }
-    
-    deinit {
-        print("Deinit -> \(self)")
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

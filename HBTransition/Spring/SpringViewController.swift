@@ -8,31 +8,21 @@
 
 import UIKit
 
-class SpringViewController: UIViewController {
+class SpringViewController: PulicViewController {
 
-    fileprivate var iconView = UIImageView()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "弹性"
         view.backgroundColor = .red
-        iconView.frame = view.bounds
-        iconView.image = #imageLiteral(resourceName: "yeah")
-        iconView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(p))
-            iconView.addGestureRecognizer(tap)
-        view.addSubview(iconView)
+        icon = #imageLiteral(resourceName: "yeah")
     }
     
-    @objc func p() -> () {
+    @objc override func p() -> () {
         let showVc = SpringShowViewController()
         showVc.dismissHandler = {
             self.navigationController?.dismiss(animated: true, completion: nil)
         }
         self.navigationController?.present(showVc, animated: true, completion: nil)
-    }
-    
-    deinit {
-        print("Deinit -> \(self)")
     }
 
     override func didReceiveMemoryWarning() {
