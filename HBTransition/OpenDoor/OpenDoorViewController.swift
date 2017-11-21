@@ -10,6 +10,7 @@ import UIKit
 
 class OpenDoorViewController: PulicViewController {
 
+    fileprivate var _pushManager = InteractionManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "OpenDoor"
@@ -18,6 +19,7 @@ class OpenDoorViewController: PulicViewController {
     
     override func p() {
         let showVc = OpenDoorShowViewController()
+        //showVc._pushManager = _pushManager
         self.navigationController?.delegate = showVc
         self.navigationController?.pushViewController(showVc, animated: true)
     }

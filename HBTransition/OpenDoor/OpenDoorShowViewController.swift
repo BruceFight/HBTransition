@@ -10,14 +10,12 @@ import UIKit
 
 class OpenDoorShowViewController: PulicViewController ,UINavigationControllerDelegate {
 
-    fileprivate var pan : UIPanGestureRecognizer?
+    fileprivate var _operation : UINavigationControllerOperation = .push
+    fileprivate var _popManager = InteractionManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         icon = #imageLiteral(resourceName: "holk")
-        pan = UIPanGestureRecognizer.init(target: self, action: #selector(move(pan:)))
-        if let pan = self.pan {
-            view.addGestureRecognizer(pan)
-        }
+        _popManager.observeGestureFor(vc: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,23 +24,37 @@ class OpenDoorShowViewController: PulicViewController ,UINavigationControllerDel
     }
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        _operation = operation
         return OpenDoorManager.init(pathType: operation == UINavigationControllerOperation.push ? .push : .pop )
     }
-//UIPercentDrivenInteractiveTransition
+    
+}
+
+class InteractionManager: UIPercentDrivenInteractiveTransition {
+    
+    fileprivate var pan : UIPanGestureRecognizer?
+    weak fileprivate var vc : UIViewController?
+    func observeGestureFor(vc:UIViewController) -> () {
+        self.vc = vc
+        self.pan = UIPanGestureRecognizer.init(target: self, action: #selector(move(pan:)))
+        if let pan = self.pan {
+            vc.view.addGestureRecognizer(pan)
+        }
+    }
+    
     @objc func move(pan:UIPanGestureRecognizer) -> () {
         var percent : CGFloat = 0
-        let x = pan.translation(in: view).x
-        percent = x / view.frame.width
+        var x : CGFloat = 0
+        if let vc = self.vc {
+            x = pan.translation(in: vc.view).x
+            percent = x / (vc.view.frame.width)
+        }
         switch pan.state {
         case .began:
-            self.navigationController?.popViewController(animated: true)
+            self.vc?.navigationController?.popViewController(animated: true)
             break
         case .changed:
-            /*
-            CGFloat transitionX = [panGesture translationInView:panGesture.view].x;
-            persent = transitionX / panGesture.view.frame.size.width;
-             */
-            
+            self.update(percent)
             break
         case .ended:
             
@@ -51,4 +63,3 @@ class OpenDoorShowViewController: PulicViewController ,UINavigationControllerDel
         }
     }
 }
-
