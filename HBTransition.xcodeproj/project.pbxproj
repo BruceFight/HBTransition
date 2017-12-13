@@ -36,7 +36,7 @@
 		2ADEA6051FB553A500BE7F65 /* OpenDoorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADEA6041FB553A500BE7F65 /* OpenDoorViewController.swift */; };
 		2ADEA6071FB553B000BE7F65 /* OpenDoorShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADEA6061FB553B000BE7F65 /* OpenDoorShowViewController.swift */; };
 		2ADEA6091FB553C500BE7F65 /* OpenDoorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADEA6081FB553C500BE7F65 /* OpenDoorManager.swift */; };
-		2ADEA60B1FB5542000BE7F65 /* PulicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADEA60A1FB5542000BE7F65 /* PulicViewController.swift */; };
+		2ADEA60B1FB5542000BE7F65 /* PublicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADEA60A1FB5542000BE7F65 /* PublicViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +92,7 @@
 		2ADEA6041FB553A500BE7F65 /* OpenDoorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDoorViewController.swift; sourceTree = "<group>"; };
 		2ADEA6061FB553B000BE7F65 /* OpenDoorShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDoorShowViewController.swift; sourceTree = "<group>"; };
 		2ADEA6081FB553C500BE7F65 /* OpenDoorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDoorManager.swift; sourceTree = "<group>"; };
-		2ADEA60A1FB5542000BE7F65 /* PulicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulicViewController.swift; sourceTree = "<group>"; };
+		2ADEA60A1FB5542000BE7F65 /* PublicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +189,7 @@
 				2ADEA6011FB5319B00BE7F65 /* TransitionCollectionViewCell.swift */,
 				2AD4AD921FB3F6090095EF4D /* TransitionManager.swift */,
 				2AD3616C1FB2B7F700EB8780 /* ListTableViewController.swift */,
-				2ADEA60A1FB5542000BE7F65 /* PulicViewController.swift */,
+				2ADEA60A1FB5542000BE7F65 /* PublicViewController.swift */,
 				2AD4AD8B1FB3F2DB0095EF4D /* Transition */,
 				2A6CCA131FB3077E00EB6A21 /* Magic */,
 				2A6CCA1C1FB308BD00EB6A21 /* Spring */,
@@ -376,7 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2ADEA60B1FB5542000BE7F65 /* PulicViewController.swift in Sources */,
+				2ADEA60B1FB5542000BE7F65 /* PublicViewController.swift in Sources */,
 				2AD3616D1FB2B7F700EB8780 /* ListTableViewController.swift in Sources */,
 				2ADEA6021FB5319B00BE7F65 /* TransitionCollectionViewCell.swift in Sources */,
 				2ADEA6071FB553B000BE7F65 /* OpenDoorShowViewController.swift in Sources */,

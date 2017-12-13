@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpringViewController: PulicViewController {
+class SpringViewController: PublicViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

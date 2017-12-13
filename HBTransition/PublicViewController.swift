@@ -1,5 +1,5 @@
 //
-//  PulicViewController.swift
+//  PublicViewController.swift
 //  HBTransition
 //
 //  Created by jianghongbao on 2017/11/10.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PulicViewController: UIViewController {
+class PublicViewController: UIViewController {
 
     open var icon : UIImage = #imageLiteral(resourceName: "yeah") {
         didSet{

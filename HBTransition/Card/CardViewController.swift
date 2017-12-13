@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardViewController: PulicViewController {
+class CardViewController: PublicViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

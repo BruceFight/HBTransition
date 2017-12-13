@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BezierViewController: PulicViewController {
+class BezierViewController: PublicViewController {
 
     open var redBtn = UIButton()
     override func viewDidLoad() {

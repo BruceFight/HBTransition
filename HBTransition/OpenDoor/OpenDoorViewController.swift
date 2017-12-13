@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OpenDoorViewController: PulicViewController {
+class OpenDoorViewController: PublicViewController {
 
     fileprivate var _pushManager = InteractionManager()
     override func viewDidLoad() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OpenDoorShowViewController: PulicViewController ,UINavigationControllerDelegate {
+class OpenDoorShowViewController: PublicViewController ,UINavigationControllerDelegate {
 
     fileprivate var _operation : UINavigationControllerOperation = .push
     fileprivate var _popManager = InteractionManager()

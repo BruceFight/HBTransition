@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardShowViewController: PulicViewController ,UINavigationControllerDelegate {
+class CardShowViewController: PublicViewController ,UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransitionViewController: PulicViewController ,UINavigationControllerDelegate ,UICollectionViewDelegate ,UICollectionViewDataSource {
+class TransitionViewController: PublicViewController ,UINavigationControllerDelegate ,UICollectionViewDelegate ,UICollectionViewDataSource {
 
     
     fileprivate var collectionView : UICollectionView?
