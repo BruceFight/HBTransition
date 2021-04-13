@@ -12,7 +12,7 @@ class MagicShowViewController: UIViewController ,UINavigationControllerDelegate 
 
     open var iconView = UIImageView()
     open var icon = UIImage()
-    fileprivate var contentLabel = UILabel()
+    private var contentLabel = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Check"
@@ -46,6 +46,6 @@ extension MagicShowViewController {
      */
     //@available(iOS 7.0, *)
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return MagicManager.init(pathType: operation == UINavigationControllerOperation.push ? .push : .pop )
+        return MagicManager.init(pathType: operation == UINavigationControllerOperation.push ? .push: .pop )
     }
 }

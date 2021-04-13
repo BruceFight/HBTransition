@@ -9,12 +9,12 @@
 import UIKit
 
 class TransitionShowViewController: UIViewController ,UINavigationControllerDelegate {
-    open var index : Int = 0 {
+    open var index: Int = 0 {
         didSet{
              iconView.image = ViewController.images[index]
         }
     }
-    fileprivate var iconView = UIImageView()
+    private var iconView = UIImageView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
@@ -32,6 +32,6 @@ class TransitionShowViewController: UIViewController ,UINavigationControllerDele
 
 extension TransitionShowViewController {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return TransitionForVcManager.init(pathType: operation == .push ? .push : .pop ,index : index)
+        return TransitionForVcManager.init(pathType: operation == .push ? .push: .pop ,index: index)
     }
 }

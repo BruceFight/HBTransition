@@ -10,14 +10,14 @@ import UIKit
 
 class TransitionForVcManager: NSObject ,UIViewControllerAnimatedTransitioning {
     open var pathType = MagicPathType.push
-    open var delay : TimeInterval = 0
-    open var duration : TimeInterval = 0.25
-    open var index : Int = 0
-    fileprivate var fromVc = UIViewController()
-    fileprivate var toVc = UIViewController()
-    fileprivate var tempView = UIView()
-    fileprivate var transitionContext : UIViewControllerContextTransitioning?
-    fileprivate var containerView = UIView()
+    open var delay: TimeInterval = 0
+    open var duration: TimeInterval = 0.25
+    open var index: Int = 0
+    private var fromVc = UIViewController()
+    private var toVc = UIViewController()
+    private var tempView = UIView()
+    private var transitionContext: UIViewControllerContextTransitioning?
+    private var containerView = UIView()
     
     init(pathType:MagicPathType ,index:Int) {
         self.pathType = pathType
@@ -39,7 +39,7 @@ class TransitionForVcManager: NSObject ,UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func push(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func push(transitionContext:UIViewControllerContextTransitioning) {
         self.transitionContext = transitionContext
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? TransitionViewController,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? TransitionShowViewController {
@@ -63,7 +63,7 @@ class TransitionForVcManager: NSObject ,UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func pop(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func pop(transitionContext:UIViewControllerContextTransitioning) {
         self.transitionContext = transitionContext
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? TransitionShowViewController ,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? TransitionViewController {

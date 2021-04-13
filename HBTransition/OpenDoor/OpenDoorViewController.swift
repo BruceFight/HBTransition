@@ -10,7 +10,7 @@ import UIKit
 
 class OpenDoorViewController: PublicViewController {
 
-    fileprivate var _pushManager = InteractionManager()
+    private var _pushManager = InteractionManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "OpenDoor"

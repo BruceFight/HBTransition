@@ -10,8 +10,8 @@ import UIKit
 
 class MagicViewController: PublicViewController ,UITableViewDelegate ,UITableViewDataSource ,UINavigationControllerDelegate {
 
-    fileprivate var tableView = UITableView()
-    fileprivate var images = ["bold","hope","look","yeah","five","eight"]
+    private var tableView = UITableView()
+    private var images = ["bold","hope","look","yeah","five","eight"]
     open var selectedMagicCell = MagicTableViewCell()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class MagicViewController: PublicViewController ,UITableViewDelegate ,UITableVie
 }
 
 extension MagicViewController {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -64,4 +65,5 @@ extension MagicViewController {
         self.navigationController?.delegate = showVc
         self.navigationController?.pushViewController(showVc, animated: true)
     }
+    
 }

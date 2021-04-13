@@ -17,7 +17,7 @@ class SpringViewController: PublicViewController {
         icon = #imageLiteral(resourceName: "yeah")
     }
     
-    @objc override func p() -> () {
+    @objc override func p() {
         let showVc = SpringShowViewController()
         showVc.dismissHandler = {
             self.navigationController?.dismiss(animated: true, completion: nil)

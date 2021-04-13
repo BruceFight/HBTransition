@@ -10,9 +10,9 @@ import UIKit
 
 class SpringShowViewController: UIViewController ,UIViewControllerTransitioningDelegate {
 
-    fileprivate var iconView = UIImageView()
-    open var dismissHandler : (() -> ())?
-    fileprivate var manger = DisInteractionManager()
+    private var iconView = UIImageView()
+    open var dismissHandler: (() -> Void)?
+    private var manger = DisInteractionManager()
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.transitioningDelegate = self
@@ -36,7 +36,7 @@ class SpringShowViewController: UIViewController ,UIViewControllerTransitioningD
         view.addSubview(iconView)
     }
     
-    @objc func d() -> () {
+    @objc func d() {
         dismissHandler?()
     }
 
@@ -60,26 +60,26 @@ extension SpringShowViewController {
     }
     */
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return manger.interation ? manger : nil
+        return manger.interation ? manger: nil
     }
     /*
      
      - (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator{
-     return _interactiveDismiss.interation ? _interactiveDismiss : nil;
+     return _interactiveDismiss.interation ? _interactiveDismiss: nil;
      }
      
      - (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator{
      XWInteractiveTransition *interactivePresent = [_delegate interactiveTransitionForPresent];
-     return interactivePresent.interation ? interactivePresent : nil;
+     return interactivePresent.interation ? interactivePresent: nil;
      }*/
 }
 
 class DisInteractionManager: UIPercentDrivenInteractiveTransition {
     
-    var interation : Bool = false
-    fileprivate var pan : UIPanGestureRecognizer?
-    weak fileprivate var vc : UIViewController?
-    func observeGestureFor(vc:UIViewController) -> () {
+    var interation: Bool = false
+    private var pan: UIPanGestureRecognizer?
+    weak private var vc: UIViewController?
+    func observeGestureFor(vc:UIViewController) {
         self.vc = vc
         self.pan = UIPanGestureRecognizer.init(target: self, action: #selector(move(pan:)))
         if let pan = self.pan {
@@ -87,9 +87,9 @@ class DisInteractionManager: UIPercentDrivenInteractiveTransition {
         }
     }
     
-    @objc func move(pan:UIPanGestureRecognizer) -> () {
-        var percent : CGFloat = 0
-        var y : CGFloat = 0
+    @objc func move(pan:UIPanGestureRecognizer) {
+        var percent: CGFloat = 0
+        var y: CGFloat = 0
         if let vc = self.vc {
             y = pan.translation(in: vc.view).y
             percent = y / 300//(vc.view.frame.height)

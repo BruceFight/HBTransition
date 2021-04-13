@@ -23,6 +23,6 @@ class CardShowViewController: PublicViewController ,UINavigationControllerDelega
     
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CardManager.init(pathType: operation == UINavigationControllerOperation.push ? .push : .pop )
+        return CardManager.init(pathType: operation == UINavigationControllerOperation.push ? .push: .pop )
     }
 }

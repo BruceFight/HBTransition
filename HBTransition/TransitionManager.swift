@@ -11,7 +11,7 @@ import UIKit
 /** CATransitionType
  * decide the animation of UIView.layer
  */
-enum CATransitionType {
+enum CATransitionType: CaseIterable {
     case Fade                       //1,淡入淡出
     case Push                       //2,推挤
     case Reveal                     //3,揭开
@@ -25,7 +25,7 @@ enum CATransitionType {
     case CameraIrisHollowOpen       //11,开镜头
     case CameraIrisHollowClose      //12,关镜头
     
-    var type : String {
+    var type: String {
         switch self {
         case .Fade:
             return kCATransitionFade
@@ -64,7 +64,7 @@ enum CATransitionSubType {
     case fromTop    //从上边开始
     case fromBottom //从下边开始
     
-    var type : String {
+    var type: String {
         switch self {
         case .fromLeft:
             return kCATransitionFromLeft
@@ -81,15 +81,15 @@ enum CATransitionSubType {
 class TransitionManager: NSObject ,CAAnimationDelegate {
     
     public static let instance = TransitionManager()
-    public let types = [CATransitionType.Fade,.Push,.Reveal,.MoveIn,.Cube,.SuckEffect,.OglFlip,.RippleEffect,.PageCurl,.PageUnCurl,.CameraIrisHollowOpen,.CameraIrisHollowClose]
+    public let types: [CATransitionType] = CATransitionType.allCases
     public let subTypes = [CATransitionSubType.fromLeft,.fromRight,.fromTop,.fromBottom]
     
     internal override init() {
         
     }
-    typealias Handler = ((_ anim: CAAnimation ,_ flag: Bool) -> ())?
-    open var startHandler : Handler?
-    open var endHandler : Handler?
+    typealias Handler = ((_ anim: CAAnimation ,_ flag: Bool) -> Void)?
+    open var startHandler: Handler?
+    open var endHandler: Handler?
     
     //MARK: - Implement
     func transition(view:UIView ,
@@ -97,7 +97,7 @@ class TransitionManager: NSObject ,CAAnimationDelegate {
                     subType:String? ,
                     duration:TimeInterval = 0.6,
                     start:Handler,
-                    end:Handler) -> () {
+                    end:Handler) {
         startHandler = start
         endHandler = end
         let animation = CATransition()
@@ -114,6 +114,7 @@ class TransitionManager: NSObject ,CAAnimationDelegate {
 }
 
 extension TransitionManager {
+    
     func animationDidStart(_ anim: CAAnimation) {
         if let start = startHandler {
             start?(anim,false)
@@ -125,4 +126,5 @@ extension TransitionManager {
             end?(anim,flag)
         }
     }
+    
 }

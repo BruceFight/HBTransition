@@ -10,8 +10,8 @@ import UIKit
 
 class CardManager: NSObject ,UIViewControllerAnimatedTransitioning {
     open var pathType = MagicPathType.push
-    open var delay : TimeInterval = 0
-    open var duration : TimeInterval = 0.8
+    open var delay: TimeInterval = 0
+    open var duration: TimeInterval = 0.8
     
     init(pathType:MagicPathType) {
         self.pathType = pathType
@@ -33,7 +33,7 @@ class CardManager: NSObject ,UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func push(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func push(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? CardViewController ,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? CardShowViewController {
             let containerView = transitionContext.containerView
@@ -58,7 +58,7 @@ class CardManager: NSObject ,UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func pop(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func pop(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? CardShowViewController ,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? CardViewController {
             let containerView = transitionContext.containerView

@@ -10,7 +10,7 @@ import UIKit
 
 class PublicViewController: UIViewController {
 
-    open var icon : UIImage = #imageLiteral(resourceName: "yeah") {
+    open var icon: UIImage = #imageLiteral(resourceName: "yeah") {
         didSet{
             iconView.image = icon
         }
@@ -26,7 +26,7 @@ class PublicViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @objc func p() -> () {
+    @objc func p() {
         print("Do")
     }
     

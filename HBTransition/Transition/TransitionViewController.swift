@@ -8,10 +8,9 @@
 
 import UIKit
 
-class TransitionViewController: PublicViewController ,UINavigationControllerDelegate ,UICollectionViewDelegate ,UICollectionViewDataSource {
+class TransitionViewController: PublicViewController, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    
-    fileprivate var collectionView : UICollectionView?
+    private var collectionView: UICollectionView?
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Transition实用"
@@ -20,7 +19,7 @@ class TransitionViewController: PublicViewController ,UINavigationControllerDele
         setCollction()
     }
     
-    func setCollction() -> () {
+    func setCollction() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize.init(width: view.bounds.width * 0.4, height: view.bounds.width * 0.4)
         collectionView = UICollectionView.init(frame: view.bounds, collectionViewLayout: layout)
@@ -33,7 +32,7 @@ class TransitionViewController: PublicViewController ,UINavigationControllerDele
         }
     }
     
-    func p(index:Int) -> () {
+    func p(index:Int) {
         let showVc = TransitionShowViewController()
         showVc.index = index
         self.navigationController?.delegate = showVc
@@ -47,6 +46,7 @@ class TransitionViewController: PublicViewController ,UINavigationControllerDele
 }
 
 extension TransitionViewController {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -67,5 +67,6 @@ extension TransitionViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.p(index: indexPath.row)
     }
+    
 }
 

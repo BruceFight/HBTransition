@@ -9,8 +9,9 @@
 import UIKit
 
 class BezierShowViewController: UIViewController ,UIViewControllerTransitioningDelegate {
-    fileprivate var iconView = UIImageView()
-    open var dismissHandler : (() -> ())?
+    
+    private var iconView = UIImageView()
+    open var dismissHandler: (() -> Void)?
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.transitioningDelegate = self
@@ -33,7 +34,7 @@ class BezierShowViewController: UIViewController ,UIViewControllerTransitioningD
         // Do any additional setup after loading the view.
     }
     
-    @objc func d() -> () {
+    @objc func d() {
        dismissHandler?()
     }
 

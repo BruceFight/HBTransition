@@ -10,8 +10,8 @@ import UIKit
 
 class OpenDoorShowViewController: PublicViewController ,UINavigationControllerDelegate {
 
-    fileprivate var _operation : UINavigationControllerOperation = .push
-    fileprivate var _popManager = InteractionManager()
+    private var _operation: UINavigationControllerOperation = .push
+    private var _popManager = InteractionManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         icon = #imageLiteral(resourceName: "holk")
@@ -25,16 +25,16 @@ class OpenDoorShowViewController: PublicViewController ,UINavigationControllerDe
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         _operation = operation
-        return OpenDoorManager.init(pathType: operation == UINavigationControllerOperation.push ? .push : .pop )
+        return OpenDoorManager.init(pathType: operation == UINavigationControllerOperation.push ? .push: .pop )
     }
     
 }
 
 class InteractionManager: UIPercentDrivenInteractiveTransition {
     
-    fileprivate var pan : UIPanGestureRecognizer?
-    weak fileprivate var vc : UIViewController?
-    func observeGestureFor(vc:UIViewController) -> () {
+    private var pan: UIPanGestureRecognizer?
+    weak private var vc: UIViewController?
+    func observeGestureFor(vc:UIViewController) {
         self.vc = vc
         self.pan = UIPanGestureRecognizer.init(target: self, action: #selector(move(pan:)))
         if let pan = self.pan {
@@ -42,9 +42,9 @@ class InteractionManager: UIPercentDrivenInteractiveTransition {
         }
     }
     
-    @objc func move(pan:UIPanGestureRecognizer) -> () {
-        var percent : CGFloat = 0
-        var x : CGFloat = 0
+    @objc func move(pan:UIPanGestureRecognizer) {
+        var percent: CGFloat = 0
+        var x: CGFloat = 0
         if let vc = self.vc {
             x = pan.translation(in: vc.view).x
             percent = x / (vc.view.frame.width)

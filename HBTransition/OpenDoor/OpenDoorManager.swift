@@ -9,9 +9,10 @@
 import UIKit
 
 class OpenDoorManager: NSObject ,UIViewControllerAnimatedTransitioning {
+    
     open var pathType = MagicPathType.push
-    open var delay : TimeInterval = 0
-    open var duration : TimeInterval = 0.8
+    open var delay: TimeInterval = 0
+    open var duration: TimeInterval = 0.8
     
     init(pathType:MagicPathType) {
         self.pathType = pathType
@@ -33,7 +34,7 @@ class OpenDoorManager: NSObject ,UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func push(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func push(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? OpenDoorViewController ,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? OpenDoorShowViewController {
             
@@ -65,7 +66,7 @@ class OpenDoorManager: NSObject ,UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func pop(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func pop(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? OpenDoorShowViewController ,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? OpenDoorViewController {
             let containerView = transitionContext.containerView
@@ -102,4 +103,5 @@ class OpenDoorManager: NSObject ,UIViewControllerAnimatedTransitioning {
             }
         }
     }
+    
 }

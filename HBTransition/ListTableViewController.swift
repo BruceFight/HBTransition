@@ -44,7 +44,7 @@ class ListTableViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var vc : UIViewController?
+        var vc: UIViewController?
         switch indexPath.row {
         case 0:
             vc = TransitionViewController()

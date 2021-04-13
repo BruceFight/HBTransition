@@ -13,9 +13,10 @@ enum SpringPathType {
     case dismiss
 }
 class SpringManager: NSObject ,UIViewControllerAnimatedTransitioning {
+    
     open var pathType = SpringPathType.present
-    open var delay : TimeInterval = 0
-    open var duration : TimeInterval = 0.6
+    open var delay: TimeInterval = 0
+    open var duration: TimeInterval = 0.6
     
     init(pathType:SpringPathType) {
         self.pathType = pathType
@@ -37,7 +38,7 @@ class SpringManager: NSObject ,UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func present(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func present(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) ,
             let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) {
             let containerView = transitionContext.containerView
@@ -64,7 +65,7 @@ class SpringManager: NSObject ,UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func dismiss(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func dismiss(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) ,
             let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) {
             let containerView = transitionContext.containerView
@@ -86,5 +87,6 @@ class SpringManager: NSObject ,UIViewControllerAnimatedTransitioning {
             })
         }
     }
+    
 }
 

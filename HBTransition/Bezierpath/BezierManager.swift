@@ -8,10 +8,11 @@
 
 import UIKit
 
-class BezierManager: NSObject ,UIViewControllerAnimatedTransitioning ,CAAnimationDelegate {
+class BezierManager: NSObject, UIViewControllerAnimatedTransitioning, CAAnimationDelegate {
+    
     open var pathType = SpringPathType.present
-    open var delay : TimeInterval = 0
-    open var duration : TimeInterval = 0.6
+    open var delay: TimeInterval = 0
+    open var duration: TimeInterval = 0.6
     
     init(pathType:SpringPathType) {
         self.pathType = pathType
@@ -33,7 +34,7 @@ class BezierManager: NSObject ,UIViewControllerAnimatedTransitioning ,CAAnimatio
         }
     }
     
-    func present(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func present(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? UINavigationController ,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) {
             guard let real = fromVc.viewControllers.last else { return }
@@ -62,7 +63,7 @@ class BezierManager: NSObject ,UIViewControllerAnimatedTransitioning ,CAAnimatio
         }
     }
     
-    func dismiss(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func dismiss(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) ,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? UINavigationController {
             guard let real = toVc.viewControllers.last else { return }
@@ -88,9 +89,11 @@ class BezierManager: NSObject ,UIViewControllerAnimatedTransitioning ,CAAnimatio
             maskLayer.add(maskAnimation, forKey: "maskAnimation")
         }
     }
+    
 }
 
 extension BezierManager {
+    
     func animationDidStart(_ anim: CAAnimation) {
         
     }
@@ -111,4 +114,5 @@ extension BezierManager {
             break
         }
     }
+    
 }

@@ -13,9 +13,10 @@ enum MagicPathType {
     case pop
 }
 class MagicManager: NSObject ,UIViewControllerAnimatedTransitioning {
+    
     open var pathType = MagicPathType.push
-    open var delay : TimeInterval = 0
-    open var duration : TimeInterval = 0.6
+    open var delay: TimeInterval = 0
+    open var duration: TimeInterval = 0.6
     
     init(pathType:MagicPathType) {
         self.pathType = pathType
@@ -37,7 +38,7 @@ class MagicManager: NSObject ,UIViewControllerAnimatedTransitioning {
             }
     }
     
-    func push(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func push(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? MagicViewController ,
             let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? MagicShowViewController {
             let containerView = transitionContext.containerView
@@ -62,7 +63,7 @@ class MagicManager: NSObject ,UIViewControllerAnimatedTransitioning {
         }
     }
     
-    func pop(transitionContext:UIViewControllerContextTransitioning) -> () {
+    func pop(transitionContext:UIViewControllerContextTransitioning) {
         if let fromVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? MagicShowViewController ,
         let toVc = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? MagicViewController {
             let containerView = transitionContext.containerView
@@ -86,4 +87,5 @@ class MagicManager: NSObject ,UIViewControllerAnimatedTransitioning {
             })
         }
     }
+    
 }

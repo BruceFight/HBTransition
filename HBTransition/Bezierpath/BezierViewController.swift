@@ -31,7 +31,7 @@ class BezierViewController: PublicViewController {
         // Do any additional setup after loading the view.
     }
     
-    @objc override func p() -> () {
+    @objc override func p() {
         let showVc = BezierShowViewController()
         showVc.dismissHandler = {[weak self] in
             self?.navigationController?.dismiss(animated: true, completion: nil)

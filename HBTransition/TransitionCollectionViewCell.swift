@@ -9,6 +9,7 @@
 import UIKit
 
 class TransitionCollectionViewCell: UICollectionViewCell {
+    
     open var image = UIImage() {
         didSet{
             iconView.image = image
@@ -19,8 +20,8 @@ class TransitionCollectionViewCell: UICollectionViewCell {
             aboutLabel.text = about
         }
     }
-    open var subType : CATransitionSubType = .fromLeft
-    open var type : CATransitionType = .Fade {
+    open var subType: CATransitionSubType = .fromLeft
+    open var type: CATransitionType = .Fade {
         didSet{
             if type == .Fade {
                 iconView.image = ViewController.images[Int(arc4random_uniform(UInt32(ViewController.images.count)))]
@@ -28,8 +29,9 @@ class TransitionCollectionViewCell: UICollectionViewCell {
             TransitionManager.instance.transition(view: iconView, type: type.type, subType: subType.type, start: nil, end: nil)
         }
     }
-    fileprivate var iconView = UIImageView()
-    fileprivate var aboutLabel = UILabel()
+    private var iconView = UIImageView()
+    private var aboutLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(iconView)

@@ -9,9 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController ,UICollectionViewDelegate ,UICollectionViewDataSource {
+    
     public static let images = [#imageLiteral(resourceName: "bold"),#imageLiteral(resourceName: "eight"),#imageLiteral(resourceName: "five"),#imageLiteral(resourceName: "flower"),#imageLiteral(resourceName: "holk"),#imageLiteral(resourceName: "hope"),#imageLiteral(resourceName: "iron"),#imageLiteral(resourceName: "look"),#imageLiteral(resourceName: "lufei"),#imageLiteral(resourceName: "spider"),#imageLiteral(resourceName: "widow"),#imageLiteral(resourceName: "yeah")]
     public static let abouts = ["淡入淡出","推挤","揭开","覆盖","立方体","吮吸","翻转","波纹","翻页","反翻页","开镜头","关镜头"]
-    fileprivate var collectionView : UICollectionView?
+    private var collectionView: UICollectionView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "CATransition"
@@ -24,7 +26,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate ,UICollectionVi
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: right)
     }
     
-    func setCollction() -> () {
+    func setCollction() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize.init(width: view.bounds.width * 0.4, height: view.bounds.width * 0.4)
         collectionView = UICollectionView.init(frame: view.bounds, collectionViewLayout: layout)
@@ -37,7 +39,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate ,UICollectionVi
         }
     }
     
-    @objc func toList() -> () {
+    @objc func toList() {
         let listVc = ListTableViewController()
         self.navigationController?.pushViewController(listVc, animated: true)
     }
@@ -49,6 +51,7 @@ class ViewController: UIViewController ,UICollectionViewDelegate ,UICollectionVi
 }
 
 extension ViewController {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -71,4 +74,5 @@ extension ViewController {
             cell.type = TransitionManager.instance.types[indexPath.row]
         }
     }
+    
 }
